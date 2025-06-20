@@ -1,10 +1,11 @@
 import './App.css'
+import FeedbackForm from './components/FeedbackForm'
 
 function App() {
 
   return (
     <>
-      <h1>hello</h1>
+      <FeedbackForm />
     </>
   )
 }

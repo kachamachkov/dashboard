@@ -1,0 +1,19 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.form-field {
+    background-color: white;
+}
+
+.invalid {
+    color: #dc3545;
+}
+
+.valid {
+    color: #28a745;
+}
