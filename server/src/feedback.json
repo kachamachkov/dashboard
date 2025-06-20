@@ -1,0 +1,90 @@
+[
+  {
+    "_id": 1750494616126,
+    "name": "John Smith",
+    "email": "john.smith@email.com",
+    "content": "The new dashboard feature is amazing! Really helps with productivity.",
+    "category": "Feature Request",
+    "status": "Resolved"
+  },
+  {
+    "_id": 1750494616127,
+    "name": "Bobby Smith",
+    "email": "bobby.smith@email.com",
+    "content": "The home page has reload bug when clicking submit fast!",
+    "category": "Bug Request",
+    "status": "Pending"
+  },
+  {
+    "_id": 1750494616128,
+    "name": "Billiyana Smith",
+    "email": "Billiyana.smith@email.com",
+    "content": "I really like your application.",
+    "category": "General",
+    "status": "Closed"
+  },
+  {
+    "_id": 1750494616256,
+    "name": "qweqwe",
+    "email": "kachamac@progress.com",
+    "content": "qweqwe",
+    "category": "Complaint",
+    "status": "Closed"
+  },
+  {
+    "_id": 1750495467229,
+    "name": "biba",
+    "email": "biba@abv.bg",
+    "content": "biba",
+    "category": "General",
+    "status": "Closed"
+  },
+  {
+    "_id": 1750499635665,
+    "name": "boqn",
+    "email": "boqn@abv.bg",
+    "content": "qweqweqw",
+    "category": "General",
+    "status": "Resolved"
+  },
+  {
+    "_id": 1750499713276,
+    "name": "qweqweq",
+    "email": "kachamac@progress.com",
+    "content": "qweqwe",
+    "category": "Feature Request",
+    "status": "Resolved"
+  },
+  {
+    "_id": 1750499766862,
+    "name": "qweqwe",
+    "email": "kachamac@progress.com",
+    "content": "qweqweq",
+    "category": "General",
+    "status": "Resolved"
+  },
+  {
+    "_id": 1750500498981,
+    "name": "bobi-testing-scheduling",
+    "email": "kachamac@progress.com",
+    "content": "qweqwe",
+    "category": "Feature Request",
+    "status": "Pending"
+  },
+  {
+    "_id": 1750500895273,
+    "name": "tania",
+    "email": "tania@abv.bg",
+    "content": "qweqwe",
+    "category": "General",
+    "status": "Pending"
+  },
+  {
+    "_id": 1750500936701,
+    "name": "asen",
+    "email": "asen@abv.bg",
+    "content": "qweqweqweqwe",
+    "category": "General",
+    "status": "Resolved"
+  }
+]
