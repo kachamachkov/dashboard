@@ -64,7 +64,7 @@ export default function FeedbackForm() {
 
                         <form.Field name="name" validators={{
                             onBlur: ({ value }) => {
-                                return value.trim() === '' ? 'Name is required' : undefined
+                                return value.trim() === '' ? 'Name is required' : undefined;
                             }
                         }}>
                             {(field) => (
@@ -80,7 +80,7 @@ export default function FeedbackForm() {
                                         autoComplete="on"
                                     />
                                     {!field.state.meta.isValid && (
-                                        <em>{field.state.meta.errors.join(', ')}</em>
+                                        <em className={styles['invalid']}>{field.state.meta.errors.join(', ')}</em>
                                     )}
                                 </div>
                             )}
@@ -94,7 +94,7 @@ export default function FeedbackForm() {
                             }
                         }}>
                             {(field) => (
-                                <div>
+                                <div className={styles['form-field']}>
                                     <label htmlFor="name">Email *</label>
                                     <input
                                         type="email"
@@ -106,7 +106,7 @@ export default function FeedbackForm() {
                                         autoComplete="on"
                                     />
                                     {!field.state.meta.isValid && (
-                                        <em>{field.state.meta.errors.join(', ')}</em>
+                                        <em className={styles['invalid']}>{field.state.meta.errors.join(', ')}</em>
                                     )}
                                 </div>
                             )}
@@ -118,7 +118,7 @@ export default function FeedbackForm() {
                             }
                         }}>
                             {(field) => (
-                                <div>
+                                <div className={styles['form-field']}>
                                     <label htmlFor="content">Content *</label>
                                     <textarea
                                         id="content"
@@ -130,7 +130,7 @@ export default function FeedbackForm() {
                                         autoComplete="on"
                                     />
                                     {!field.state.meta.isValid && (
-                                        <em>{field.state.meta.errors.join(', ')}</em>
+                                        <em className={styles['invalid']}>{field.state.meta.errors.join(', ')}</em>
                                     )}
                                 </div>
                             )}
@@ -142,7 +142,7 @@ export default function FeedbackForm() {
                             }
                         }}>
                             {(field) => (
-                                <div>
+                                <div className={styles['form-field']}>
                                     <label htmlFor="category">Category *</label>
                                     <select
                                         id="category"
@@ -158,7 +158,7 @@ export default function FeedbackForm() {
                                         ))}
                                     </select>
                                     {!field.state.meta.isValid && (
-                                        <em>{field.state.meta.errors.join(', ')}</em>
+                                        <em className={styles['invalid']}>{field.state.meta.errors.join(', ')}</em>
                                     )}
                                 </div>
                             )}
@@ -170,7 +170,7 @@ export default function FeedbackForm() {
                             }
                         }}>
                             {(field) => (
-                                <div>
+                                <div className={styles['form-field']}>
                                     <label htmlFor="status">Status *</label>
                                     <select
                                         id="status"
@@ -186,13 +186,14 @@ export default function FeedbackForm() {
                                         ))}
                                     </select>
                                     {!field.state.meta.isValid && (
-                                        <em>{field.state.meta.errors.join(', ')}</em>
+                                        <em className={styles['invalid']}>{field.state.meta.errors.join(', ')}</em>
                                     )}
                                 </div>
                             )}
                         </form.Field>
 
                         <button
+                            className={styles['form-btn']}
                             disabled={isSubmitting}
                         >
                             {isSubmitting ? 'Submitting...' : 'Submit Feedback'}
