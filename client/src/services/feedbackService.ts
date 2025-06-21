@@ -3,20 +3,25 @@ import axios from "axios";
 const baseUrl = 'http://localhost:5000/feedback';
 
 export default {
-    async getFeedbackItems() {
+    async getAll() {
         const result = await axios.get(baseUrl);
 
         return result.data;
     },
 
-    async updateFeedbackItem(data: any) {
+    async getOne(id: number) {
+        const result = await axios.get(`${baseUrl}/${id}`);
+
+        return result.data;
+    },
+
+    async update(data: any) {
         const result = await axios.put(`${baseUrl}/${data._id}`, data);
 
-        console.log(result);
         return result;
     },
 
-    async deleteFeedbackItem(data: any) {
-        await axios.delete(`${baseUrl}/${data._id}`);
+    async delete(id: number) {
+        await axios.delete(`${baseUrl}/${id}`);
     }
 }

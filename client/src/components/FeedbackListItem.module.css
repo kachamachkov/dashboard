@@ -35,7 +35,7 @@
     cursor: pointer;
     padding: 8px;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .icon-button:hover {
@@ -78,4 +78,8 @@
 
 .status-default {
     background-color: #9ca3af;
+}
+
+.drag-button{
+    cursor: grabbing;
 }

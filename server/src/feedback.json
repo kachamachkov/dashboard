@@ -30,29 +30,5 @@
     "content": "qweqwe",
     "category": "Complaint",
     "status": "Closed"
-  },
-  {
-    "_id": 1750495467229,
-    "name": "biba",
-    "email": "biba@abv.bg",
-    "content": "biba",
-    "category": "General",
-    "status": "Closed"
-  },
-  {
-    "_id": 1750499635665,
-    "name": "boqn",
-    "email": "boqn@abv.bg",
-    "content": "qweqweqw",
-    "category": "General",
-    "status": "Resolved"
-  },
-  {
-    "_id": 1750499713276,
-    "name": "qweqweq",
-    "email": "kachamac@progress.com",
-    "content": "qweqwe",
-    "category": "Feature Request",
-    "status": "Resolved"
   }
 ]

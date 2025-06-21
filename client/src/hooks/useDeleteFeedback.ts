@@ -5,7 +5,7 @@ export default function useDeleteFeedback() {
     const queryClient = useQueryClient();
 
     const feedbackMutation = useMutation({
-        mutationFn: feedbackService.deleteFeedbackItem,
+        mutationFn: feedbackService.delete,
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['feedback'] })
         }
