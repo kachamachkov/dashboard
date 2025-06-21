@@ -1,5 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import feedbackService from "../services/feedbackService"
+import { useState } from "react";
+import styles from './FeedbackListItem.module.css'
 
 interface FeedbackListItemProps {
     _id: number,
@@ -18,33 +20,62 @@ export default function FeedbackListItem({
     category,
     status
 }: FeedbackListItemProps) {
+    const [isExpanded, setIsExpanded] = useState(false);
 
     const deleteMutation = useMutation({
         mutationFn: feedbackService.deleteFeedbackItem,
-    })
+    });
 
     const updateMutation = useMutation({
         mutationFn: feedbackService.updateFeedbackItem,
-    })
+    });
 
     return (
-        <>
-            <h4>Name: {name}</h4>
-            <h5>Category: {category}</h5>
-            <span>Status: {status}</span>
+        <div className={styles['feedback-accordion']}>
+            <div className={styles['feedback-header']}>
+                <div className={styles['feedback-info']}>
+                    <h4>{name}</h4>
+                    <span className={styles['category']}>Category: {category}</span>
+                    <span className={styles['status']}>Status: {status}</span>
+                </div>
 
-            <button
-                onClick={() => updateMutation.mutate({ _id })}
-            >
-                Edit
-            </button>
+                <div className={styles['feedback-actions']}>
+                    <button
+                        className={`${styles['icon-button']} ${styles['edit-button']}`}
+                        onClick={() => updateMutation.mutate({ _id })}
+                        title="Edit"
+                    >
+                        ✏️
+                    </button>
 
-            <button
-                onClick={() => deleteMutation.mutate({ _id })}
-            >
-                Delete
-            </button>
+                    <button
+                        className={`${styles['icon-button']} ${styles['delete-button']}`}
+                        onClick={() => deleteMutation.mutate({ _id })}
+                        title="Delete"
+                    >
+                        🗑️
+                    </button>
 
-        </>
-    )
+                    <button
+                        className={`${styles['icon-button']} ${styles['expand-button']}`}
+                        onClick={() => setIsExpanded(state => !state)}
+                        title={isExpanded ? "Collapse" : "Expand"}
+                    >
+                        {isExpanded ? '▼' : '▶'}
+                    </button>
+                </div>
+            </div>
+
+            {isExpanded && (
+                <div className={styles['feedback-details']}>
+                    <div className={styles['detail-item']}>
+                        <strong>Email:</strong> {email}
+                    </div>
+                    <div className={styles['detail-item']}>
+                        <strong>Content:</strong> {content}
+                    </div>
+                </div>
+            )}
+        </div>
+    );
 }
