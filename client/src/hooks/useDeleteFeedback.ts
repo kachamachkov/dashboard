@@ -4,12 +4,12 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 export default function useDeleteFeedback() {
     const queryClient = useQueryClient();
 
-    const feedbackMutation = useMutation({
+    const deleteMutation = useMutation({
         mutationFn: feedbackService.delete,
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['feedback'] })
         }
     })
 
-    return feedbackMutation;
+    return deleteMutation;
 }
