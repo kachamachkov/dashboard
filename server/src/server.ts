@@ -71,6 +71,36 @@ app.get('/feedback', async (req: Request, res: Response) => {
     }
 })
 
+app.get('/feedback/:id', async (req: Request, res: Response) => {
+    try {
+        const feedbackId = parseInt(req.params.id);
+        
+        if (isNaN(feedbackId)) {
+            return res.status(400).json({ error: 'Invalid feedback ID' });
+        }
+
+        let feedbackData: FeedbackObject[] = [];
+
+        try {
+            const fileContent = await fs.readFile(JSON_FILE_PATH, 'utf-8');
+            feedbackData = JSON.parse(fileContent);
+        } catch (error) {
+            feedbackData = [];
+        }
+
+        const feedback = feedbackData.find(item => item._id === feedbackId);
+
+        if (!feedback) {
+            return res.status(404).json({ error: 'Feedback not found' });
+        }
+
+        res.status(200).json(feedback);
+    } catch (error) {
+        console.error('Error reading feedback file:', error);
+        res.status(500).json({ error: 'Failed to retrieve feedback' });
+    }
+});
+
 app.post('/submit-feedback', async (req: Request, res: Response) => {
     try {
         const feedbackObject: FeedbackObject = req.body;

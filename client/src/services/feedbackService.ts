@@ -9,7 +9,7 @@ export default {
         return result.data;
     },
 
-    async getOne(id: number) {
+    async getOne(data: any) {
         const result = await axios.get(`${baseUrl}/${id}`);
 
         return result.data;

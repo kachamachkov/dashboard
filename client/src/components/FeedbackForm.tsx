@@ -6,7 +6,7 @@ import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 interface FeedbackData {
-  _id: null;
+  _id?: string | null;
   name: string;
   email: string;
   content: string;
@@ -14,7 +14,17 @@ interface FeedbackData {
   status: FeedbackStatus;
 }
 
-export default function FeedbackForm() {
+interface FeedbackFormProps {
+  savedData?: FeedbackData;
+  isEditMode?: boolean;
+  feedbackId?: string;
+}
+
+export default function FeedbackForm({
+  savedData,
+  isEditMode = false,
+  feedbackId
+}: FeedbackFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const categories = FEEDBACK_CATEGORIES;
   const statuses = FEEDBACK_STATUSES;
@@ -22,12 +32,20 @@ export default function FeedbackForm() {
 
   const feedbackMutation = useMutation({
     mutationFn: async (feedbackData: FeedbackData) => {
-      const response = await axios.post('http://localhost:5000/submit-feedback', feedbackData);
-      return response.data;
+
+      if (isEditMode && feedbackId) {
+        const response = await axios.put(`http://localhost:5000/feedback/${feedbackId}`, feedbackData);
+        return response.data;
+      } else {
+        const response = await axios.post('http://localhost:5000/submit-feedback', feedbackData);
+        return response.data;
+      }
     },
     onSuccess: () => {
       setSubmitted(state => !state);
-      form.reset();
+      if (!isEditMode) {
+        form.reset();
+      }
       queryClient.invalidateQueries({ queryKey: ['feedback'] });
     },
     onError: (error) => {
@@ -38,11 +56,11 @@ export default function FeedbackForm() {
   const form = useForm({
     defaultValues: {
       _id: null,
-      name: '',
-      email: '',
-      content: '',
-      category: '',
-      status: ''
+      name: savedData?.name || '',
+      email: savedData?.email || '',
+      content: savedData?.content || '',
+      category: savedData?.category || '',
+      status: savedData?.status || ''
     } as unknown as FeedbackData,
     onSubmit: async ({ value }) => {
       feedbackMutation.mutate(value);
@@ -211,7 +229,7 @@ export default function FeedbackForm() {
               className={styles['form-btn']}
               disabled={feedbackMutation.isPending}
             >
-              {feedbackMutation.isPending ? 'Submitting...' : 'Submit Feedback'}
+              {feedbackMutation.isPending ? 'Submitting...' : 'Submit'}
             </button>
           </form>
         )}

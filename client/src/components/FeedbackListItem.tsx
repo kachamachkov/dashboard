@@ -1,9 +1,7 @@
-import { useMutation } from "@tanstack/react-query"
-import feedbackService from "../services/feedbackService"
 import { useState } from "react";
 import styles from './FeedbackListItem.module.css'
 import useDeleteFeedback from "../hooks/useDeleteFeedback";
-// import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface FeedbackListItemProps {
     _id: number,
@@ -22,14 +20,11 @@ export default function FeedbackListItem({
     category,
     status
 }: FeedbackListItemProps) {
-
     // const { feedbackId } = useParams();
     const [isExpanded, setIsExpanded] = useState(false);
     const deleteFeedback = useDeleteFeedback();
 
-    const deleteFeedbackHandler = () => {
-        deleteFeedback.mutate(_id);
-    }
+    const handleDelete = () => deleteFeedback.mutate(_id);
 
     return (
         <div className={styles['feedback-accordion']}>
@@ -61,17 +56,17 @@ export default function FeedbackListItem({
                 </div>
 
                 <div className={styles['feedback-actions']}>
-                    <button
+                    <Link
+                        to={`/feedback/${_id}`}
                         className={`${styles['icon-button']} ${styles['edit-button']}`}
-                        // onClick={() => updateMutation.mutate({ _id })}
                         title="Edit"
                     >
                         ✏️
-                    </button>
+                    </Link>
 
                     <button
                         className={`${styles['icon-button']} ${styles['delete-button']}`}
-                        onClick={deleteFeedbackHandler}
+                        onClick={handleDelete}
                         title="Delete"
                     >
                         🗑️

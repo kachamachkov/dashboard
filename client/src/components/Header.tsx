@@ -18,7 +18,7 @@ export default function Header() {
                     className={styles['nav-link']}
                     style={({ isActive }) => isActive ? { color: '#007bff' } : {}}
                 >
-                    Submit Feedback
+                    Create
                 </NavLink>
             </nav>
         </header>
