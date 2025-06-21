@@ -33,6 +33,23 @@ export default function FeedbackListItem({
     return (
         <div className={styles['feedback-accordion']}>
             <div className={styles['feedback-header']}>
+                <div className={styles['feedback-controls']}>
+                    <button
+                        className={`${styles['icon-button']} ${styles['drag-button']}`}
+                        title="Drag to reorder"
+                    >
+                        ⋮⋮
+                    </button>
+
+                    <button
+                        className={`${styles['icon-button']} ${styles['expand-button']}`}
+                        onClick={() => setIsExpanded(state => !state)}
+                        title={isExpanded ? "Collapse" : "Expand"}
+                    >
+                        {isExpanded ? '▼' : '▶'}
+                    </button>
+                </div>
+
                 <div className={styles['feedback-info']}>
                     <h4>{name}</h4>
                     <span className={styles['category']}>Category: {category}</span>
@@ -54,14 +71,6 @@ export default function FeedbackListItem({
                         title="Delete"
                     >
                         🗑️
-                    </button>
-
-                    <button
-                        className={`${styles['icon-button']} ${styles['expand-button']}`}
-                        onClick={() => setIsExpanded(state => !state)}
-                        title={isExpanded ? "Collapse" : "Expand"}
-                    >
-                        {isExpanded ? '▼' : '▶'}
                     </button>
                 </div>
             </div>
