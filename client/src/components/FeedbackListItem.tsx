@@ -30,6 +30,7 @@ export default function FeedbackListItem({
         mutationFn: feedbackService.updateFeedbackItem,
     });
 
+
     return (
         <div className={styles['feedback-accordion']}>
             <div className={styles['feedback-header']}>
@@ -53,7 +54,10 @@ export default function FeedbackListItem({
                 <div className={styles['feedback-info']}>
                     <h4>{name}</h4>
                     <span className={styles['category']}>Category: {category}</span>
-                    <span className={styles['status']}>Status: {status}</span>
+                    <span className={styles['status']}>
+                        <span className={`${styles['status-dot']} ${getStatusClass(status)}`}></span>
+                        Status: {status}
+                    </span>
                 </div>
 
                 <div className={styles['feedback-actions']}>
@@ -88,3 +92,16 @@ export default function FeedbackListItem({
         </div>
     );
 }
+
+const getStatusClass = (status: string) => {
+    switch (status.toLowerCase()) {
+        case 'pending':
+            return styles['status-pending'];
+        case 'resolved':
+            return styles['status-resolved'];
+        case 'closed':
+            return styles['status-closed'];
+        default:
+            return styles['status-default'];
+    }
+};

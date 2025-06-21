@@ -50,3 +50,32 @@
 .detail-item {
     margin-bottom: 8px;
 }
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-pending {
+    background-color: #fbbf24;
+}
+
+.status-resolved {
+    background-color: #10b981;
+}
+
+.status-closed {
+    background-color: #6b7280;
+}
+
+.status-default {
+    background-color: #9ca3af;
+}
