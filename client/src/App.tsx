@@ -1,16 +1,22 @@
 import './App.css'
 import FeedbackForm from './components/FeedbackForm'
 import FeedbackList from './components/FeedbackList'
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
 
 function App() {
 
   return (
-    <>
-      <FeedbackForm />
 
-      <FeedbackList />
-    </>
+    <div>
+      <Header />
+      
+      <Routes>
+        <Route path='/' element={<FeedbackList />} />
+        <Route path='/submit-feedback' element={<FeedbackForm />} />
+      </Routes>
+    </div>
   )
 }
 
-export default App
+export default App;
