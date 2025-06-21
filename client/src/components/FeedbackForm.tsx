@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
 import styles from './FeedbackForm.module.css'
 import { FEEDBACK_CATEGORIES, FEEDBACK_STATUSES, type FeedbackCategory, type FeedbackStatus } from "../types/feedback";
-import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import feedbackService from "../services/feedbackService";
 
 interface FeedbackData {
-  _id: null;
+  _id?: string | null;
   name: string;
   email: string;
   content: string;
@@ -14,7 +14,17 @@ interface FeedbackData {
   status: FeedbackStatus;
 }
 
-export default function FeedbackForm() {
+interface FeedbackFormProps {
+  savedData?: FeedbackData;
+  isEditMode?: boolean;
+  feedbackId?: string;
+}
+
+export default function FeedbackForm({
+  savedData,
+  isEditMode = false,
+  feedbackId
+}: FeedbackFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const categories = FEEDBACK_CATEGORIES;
   const statuses = FEEDBACK_STATUSES;
@@ -22,12 +32,19 @@ export default function FeedbackForm() {
 
   const feedbackMutation = useMutation({
     mutationFn: async (feedbackData: FeedbackData) => {
-      const response = await axios.post('http://localhost:5000/submit-feedback', feedbackData);
-      return response.data;
+      if (isEditMode && feedbackId) {
+        const response = await feedbackService.update({ ...feedbackData, _id: feedbackId });
+        return response.data;
+      } else {
+        const response = await feedbackService.create(feedbackData);
+        return response.data;
+      }
     },
     onSuccess: () => {
       setSubmitted(state => !state);
-      form.reset();
+      if (!isEditMode) {
+        form.reset();
+      }
       queryClient.invalidateQueries({ queryKey: ['feedback'] });
     },
     onError: (error) => {
@@ -38,11 +55,11 @@ export default function FeedbackForm() {
   const form = useForm({
     defaultValues: {
       _id: null,
-      name: '',
-      email: '',
-      content: '',
-      category: '',
-      status: ''
+      name: savedData?.name || '',
+      email: savedData?.email || '',
+      content: savedData?.content || '',
+      category: savedData?.category || '',
+      status: savedData?.status || ''
     } as unknown as FeedbackData,
     onSubmit: async ({ value }) => {
       feedbackMutation.mutate(value);
@@ -54,9 +71,11 @@ export default function FeedbackForm() {
       {submitted ? (
         <div>
           <h2>Thank you for your feedback!</h2>
-          <button onClick={() => setSubmitted(state => !state)}>
-            Create New
-          </button>
+          {savedData ? null : (
+            <button onClick={() => setSubmitted(state => !state)}>
+              Create New
+            </button>
+          )}
         </div>
       ) :
         (
@@ -87,6 +106,7 @@ export default function FeedbackForm() {
                     onChange={(e) => field.handleChange(e.target.value as FeedbackCategory)}
                     placeholder="Bobby"
                     autoComplete="on"
+                    disabled={isEditMode}
                   />
                   {!field.state.meta.isValid && (
                     <em className={styles['invalid']}>{field.state.meta.errors.join(', ')}</em>
@@ -113,6 +133,7 @@ export default function FeedbackForm() {
                     onChange={(e) => field.handleChange(e.target.value)}
                     placeholder="Bobby@example.com"
                     autoComplete="on"
+                    disabled={isEditMode}
                   />
                   {!field.state.meta.isValid && (
                     <em className={styles['invalid']}>{field.state.meta.errors.join(', ')}</em>
@@ -158,6 +179,7 @@ export default function FeedbackForm() {
                     value={field.state.value ?? ''}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value as FeedbackCategory)}
+                    disabled={isEditMode}
                   >
                     <option value="">Select a category</option>
                     {categories.map(category => (
@@ -211,7 +233,7 @@ export default function FeedbackForm() {
               className={styles['form-btn']}
               disabled={feedbackMutation.isPending}
             >
-              {feedbackMutation.isPending ? 'Submitting...' : 'Submit Feedback'}
+              {feedbackMutation.isPending ? 'Submitting...' : 'Submit'}
             </button>
           </form>
         )}

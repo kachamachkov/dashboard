@@ -1,5 +1,6 @@
 import FeedbackListItem from "./FeedbackListItem";
 import useGetFeedback from "../hooks/useGetFeedback";
+import styles from './FeedbackList.module.css'
 
 export default function FeedbackList() {
     const feedbackQuery = useGetFeedback();
@@ -15,7 +16,7 @@ export default function FeedbackList() {
     return (
         <>
             <h2>Feedback Collection</h2>
-            <ul>
+            <ul className={styles['list']}>
 
                 {feedbackQuery.data && feedbackQuery.data.map((item: any) => (
                     <li

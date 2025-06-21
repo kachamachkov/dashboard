@@ -1,20 +1,13 @@
-import axios from "axios";
+import feedbackService from "../services/feedbackService";
 import { useQuery } from "@tanstack/react-query";
 
 export default function useGetFeedback() {
     const feedbackQuery = useQuery({
         queryKey: ['feedback'],
-        queryFn: () => getFeedbackItems(),
+        queryFn: feedbackService.getAll,
         staleTime: 5 * 60 * 1000,
         retry: 1,
     })
 
     return feedbackQuery;
-}
-
-async function getFeedbackItems() {
-    const url = 'http://localhost:5000/feedback';
-    const result = await axios.get(url);
-
-    return result.data;
 }

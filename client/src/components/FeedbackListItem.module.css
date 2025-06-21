@@ -1,0 +1,85 @@
+.feedback-accordion {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background: white;
+}
+
+.feedback-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.feedback-info h4 {
+    margin: 0 0 8px 0;
+}
+
+.feedback-info .category,
+.feedback-info .status {
+    margin-right: 16px;
+    font-size: 14px;
+    color: #666;
+}
+
+.feedback-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+.icon-button:hover {
+    background-color: #f5f5f5;
+}
+
+.feedback-details {
+    padding: 16px;
+    background-color: #f9f9f9;
+}
+
+.detail-item {
+    margin-bottom: 8px;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-pending {
+    background-color: #fbbf24;
+}
+
+.status-resolved {
+    background-color: #10b981;
+}
+
+.status-closed {
+    background-color: #6b7280;
+}
+
+.status-default {
+    background-color: #9ca3af;
+}
+
+.drag-button{
+    cursor: grabbing;
+}
