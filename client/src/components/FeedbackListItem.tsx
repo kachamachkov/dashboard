@@ -1,3 +1,5 @@
+import { useMutation } from "@tanstack/react-query"
+import feedbackService from "../services/feedbackService"
 
 interface FeedbackListItemProps {
     _id: number,
@@ -8,7 +10,6 @@ interface FeedbackListItemProps {
     status: string,
 }
 
-
 export default function FeedbackListItem({
     _id,
     name,
@@ -16,18 +17,34 @@ export default function FeedbackListItem({
     content,
     category,
     status
-
 }: FeedbackListItemProps) {
 
+    const deleteMutation = useMutation({
+        mutationFn: feedbackService.deleteFeedbackItem,
+    })
 
+    const updateMutation = useMutation({
+        mutationFn: feedbackService.updateFeedbackItem,
+    })
 
     return (
         <>
             <h4>Name: {name}</h4>
             <h5>Category: {category}</h5>
             <span>Status: {status}</span>
-            <button>Edit</button>
-            <button>Delete</button>
+
+            <button
+                onClick={() => updateMutation.mutate({ _id })}
+            >
+                Edit
+            </button>
+
+            <button
+                onClick={() => deleteMutation.mutate({ _id })}
+            >
+                Delete
+            </button>
+
         </>
     )
 }

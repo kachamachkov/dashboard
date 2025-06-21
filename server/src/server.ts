@@ -85,4 +85,32 @@ app.post('/submit-feedback', async (req: Request, res: Response) => {
     }
 })
 
+app.delete('/feedback/:id', async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        
+        let feedbackData: FeedbackObject[] = [];
+        try {
+            const fileContent = await fs.readFile(JSON_FILE_PATH, 'utf-8');
+            feedbackData = JSON.parse(fileContent);
+        } catch (error) {
+            feedbackData = [];
+        }
+
+        const feedbackIndex = feedbackData.findIndex(feedback => feedback._id === parseInt(id));
+        
+        if (feedbackIndex === -1) {
+            return res.status(404).json({ error: 'Feedback not found' });
+        }
+
+        feedbackData.splice(feedbackIndex, 1);
+        await fs.writeFile(JSON_FILE_PATH, JSON.stringify(feedbackData, null, 2));
+        
+        res.status(200).json({ message: 'Feedback deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting feedback:', error);
+        res.status(500).json({ error: 'Failed to delete feedback' });
+    }
+});
+
 app.listen(5000, () => console.log('Server is listening on port 5000...'));
