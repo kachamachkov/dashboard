@@ -9,6 +9,7 @@ import FilterControls from "../filterControls/FilterControls";
 import SortingControls from "../sortingControls/SortingControls";
 import { useInView } from "react-intersection-observer";
 import { useFeedbackList } from "../../hooks/useInfiniteQuery";
+import Spinner from "../spinner/Spinner";
 
 export type FeedbackItem = {
     _id: string;
@@ -66,9 +67,7 @@ export default function FeedbackList() {
         { status: statusOrder }
     );
 
-
-
-    if (status === 'pending') return <h2>Loading...</h2>;
+    if (status === 'pending') return <Spinner text="Loading more items..." />;
     if (status === 'error') return <h2>Failed to load feedback.</h2>;
 
     return (
@@ -99,7 +98,9 @@ export default function FeedbackList() {
                 ))}
             </ul>
 
-            <div style={{ height: '50px' }} ref={ref}>{isFetchingNextPage && <p>Loading more...</p>}</div>
+            <div ref={ref}>
+                {isFetchingNextPage && <Spinner size={35} text="Loading more..." />}
+            </div>
         </>
     );
 }
