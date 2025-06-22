@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from './FeedbackListItem.module.css'
-import useDeleteFeedback from "../hooks/useDeleteFeedback";
+import useDeleteFeedback from "../../../hooks/useDeleteFeedback";
 import { Link } from "react-router-dom";
 
 interface FeedbackListItemProps {

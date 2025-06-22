@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
-import useGetOneFeedback from "../hooks/useGetOneFeedback";
-import FeedbackForm from "./FeedbackForm";
+import useGetOneFeedback from "../../../hooks/useGetOneFeedback";
+import FeedbackForm from "../../feedbackForm/FeedbackForm";
 
 export default function FeedbackDetails() {
     const { id } = useParams<{ id: string }>();
@@ -16,7 +16,6 @@ export default function FeedbackDetails() {
 
     return (
         <div>
-            <h1>Edit Feedback</h1>
             {feedbackOneQuery.data && (
                 <FeedbackForm
                     isEditMode={true}

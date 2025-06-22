@@ -1,0 +1,55 @@
+.feedback-success {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FAFAFA;
+    padding: 2.5em;
+    border: 1px solid #E0E0E0;
+    border-radius: 0.5em;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 500px;
+    margin: auto;
+}
+
+.success-content {
+    text-align: center;
+    width: 100%;
+}
+
+.success-content h2 {
+    color: rgb(0, 123, 255);
+    margin: 0 0 1em 0;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.success-message {
+    color: #333;
+    margin: 0 0 2em 0;
+    line-height: 1.5;
+    font-size: 1em;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.btn-secondary {
+    background-color: #fff;
+    color: #1976D2;
+    border: 1px solid #1976D2;
+    padding: 0.75em 1.5em;
+    border-radius: 0.3em;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #E3F2FD;
+    transform: translateY(-2px);
+}

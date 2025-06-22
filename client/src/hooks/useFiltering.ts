@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import type { FeedbackItem } from '../components/FeedbackList';
+import type { FeedbackItem } from '../components/feedbackList/FeedbackList';
 
 type Category = 'Bug Report' | 'Feature Request' | 'General' | 'Complaint';
 type Status = 'Pending' | 'Resolved' | 'Closed';

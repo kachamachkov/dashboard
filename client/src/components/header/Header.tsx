@@ -10,7 +10,7 @@ export default function Header() {
                     className={styles['nav-link']}
                     style={({ isActive }) => isActive ? { color: '#007bff' } : {}}
                 >
-                    Home
+                    Dashboard
                 </NavLink>
 
                 <NavLink

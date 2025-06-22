@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SortingControls.module.css';
-import type { FeedbackItem } from './FeedbackList';
+import type { FeedbackItem } from '../feedbackList/FeedbackList';
 
 
 interface SortingControlsProps {

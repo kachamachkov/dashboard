@@ -1,11 +1,11 @@
-import FeedbackListItem from "./FeedbackListItem";
-import useGetFeedback from "../hooks/useGetFeedback";
+import FeedbackListItem from "./feedbackListItem/FeedbackListItem";
+import useGetFeedback from "../../hooks/useGetFeedback";
 import styles from './FeedbackList.module.css';
-import useSorting from "../hooks/useSorting";
-import SortingControls from "./SortingControls";
-import FilterControls from "./FilterControls";
-import SearchBar from "./SearchBar";
-import { useFiltering } from "../hooks/useFiltering";
+import useSorting from "../../hooks/useSorting";
+import SearchBar from "../search/SearchBar";
+import { useFiltering } from "../../hooks/useFiltering";
+import FilterControls from "../filterControls/FilterControls";
+import SortingControls from "../sortingControls/SortingControls";
 
 export type FeedbackItem = {
     _id: string;
@@ -55,7 +55,6 @@ export default function FeedbackList() {
 
     return (
         <>
-            <h2>Dashboard</h2>
             <SearchBar
                 onSearch={setSearchTerm}
                 placeholder="Search by name, email, or content..."

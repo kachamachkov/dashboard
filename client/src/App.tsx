@@ -1,9 +1,9 @@
 import './App.css'
-import FeedbackForm from './components/FeedbackForm'
-import FeedbackList from './components/FeedbackList'
+import FeedbackForm from './components/feedbackForm/FeedbackForm'
+import FeedbackList from './components/feedbackList/FeedbackList'
 import { Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import FeedbackDetails from './components/FeedbackDetails';
+import FeedbackDetails from './components/feedbackList/feedbackDetails/FeedbackDetails';
+import Header from './components/header/Header';
 
 function App() {
 

@@ -1,0 +1,114 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    background-color: #FAFAFA;
+    padding: 2.5em;
+    border: 1px solid #E0E0E0;
+    border-radius: 0.5em;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 500px;
+    margin: auto;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5em;
+}
+
+.form-field label {
+    font-weight: 600;
+    color: #333;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 0.6em 0.8em;
+    border: 1px solid #CCC;
+    border-radius: 0.3em;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+    resize: none;
+    overflow-y: auto;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: #1976D2;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
+    outline: none;
+}
+
+.form-field input:disabled,
+.form-field select:disabled,
+.form-field textarea:disabled {
+    background-color: #f5f5f5;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.form-field input:disabled:focus,
+.form-field select:disabled:focus,
+.form-field textarea:disabled:focus {
+    border-color: #CCC;
+    box-shadow: none;
+}
+
+.form-field textarea::placeholder,
+.form-field input::placeholder {
+    font-family: inherit;
+    font-size: 1em;
+    color: #999;
+    opacity: 1;
+}
+
+
+.form-btn {
+    background-color: #1976D2;
+    color: #fff;
+    border: none;
+    padding: 0.75em 1.5em;
+    border-radius: 0.3em;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    align-self: flex-start;
+}
+
+.form-btn:hover {
+    background-color: #1565C0;
+    transform: translateY(-2px);
+}
+
+.form-btn:disabled {
+    background-color: #90CAF9;
+    cursor: not-allowed;
+}
+
+.invalid {
+    font-size: 0.85em;
+    color: #C62828;
+    margin-top: -0.3em;
+}
+
+.valid {
+    font-size: 0.85em;
+    color: #2E7D32;
+    margin-top: -0.3em;
+}
+
+.error {
+    color: #C62828;
+    font-weight: 500;
+    margin-top: 1em;
+}
