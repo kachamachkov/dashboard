@@ -8,16 +8,17 @@
 .sort-controls button {
     padding: 0.25rem 0.5rem;
     border: 1px solid #ccc;
-    background: white;
+    background-color: var(--primary-color);
+    color: #fff;
     cursor: pointer;
     border-radius: 4px;
 }
 
 .sort-controls button:hover {
-    background: #f0f0f0;
+    background: var(--primary-color-hover);
 }
 
 .active-sort {
-    background: #007acc !important;
-    color: white !important;
+    background: var(--primary-color-hover) !important;
+    color: #fff !important;
 }

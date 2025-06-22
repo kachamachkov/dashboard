@@ -12,9 +12,24 @@
 .nav-link {
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    background-color: transparent;
+    border: 1px solid transparent;
 }
 
 .nav-link:hover {
-    color: #007bff;
+    color: var(--primary-color-hover);
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link-active {
+    color: white;
+    background-color: var(--primary-color-hover);
+    border: 1px solid var(--primary-color-hover);
 }

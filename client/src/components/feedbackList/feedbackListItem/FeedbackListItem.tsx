@@ -3,6 +3,15 @@ import styles from './FeedbackListItem.module.css'
 import useDeleteFeedback from "../../../hooks/useDeleteFeedback";
 import { Link } from "react-router-dom";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faBug,
+    faLightbulb,
+    faInfoCircle,
+    faExclamationCircle
+} from '@fortawesome/free-solid-svg-icons';
+
+
 interface FeedbackListItemProps {
     _id: string,
     name: string,
@@ -31,6 +40,7 @@ export default function FeedbackListItem({
                     <button
                         className={`${styles['icon-button']} ${styles['drag-button']}`}
                         title="Drag to reorder"
+                        aria-label="Drag to reorder feedback item"
                     >
                         ⋮⋮
                     </button>
@@ -38,18 +48,47 @@ export default function FeedbackListItem({
                     <button
                         className={`${styles['icon-button']} ${styles['expand-button']}`}
                         onClick={() => setIsExpanded(state => !state)}
-                        title={isExpanded ? "Collapse" : "Expand"}
+                        title={isExpanded ? "Collapse feedback details" : "Expand feedback details"}
+                        aria-label={isExpanded ? "Collapse feedback details" : "Expand feedback details"}
                     >
                         {isExpanded ? '-' : '+'}
                     </button>
                 </div>
 
                 <div className={styles['feedback-info']}>
-                    <h4>{name}</h4>
-                    <span className={styles['category']}>Category: {category}</span>
+                    <h4
+                        title="Submitted by"
+                    >
+                        {name}
+                    </h4>
+                    <div className={styles['category']}>
+                        <FontAwesomeIcon
+                            icon={getCategoryIcon(category)}
+                            className={styles['category-icon']}
+                            aria-label={`Category: ${category}`}
+                            title={`Feedback category: ${category}`}
+                        />
+                        <span
+                            title={`Feedback category: ${category}`}
+                            aria-label={`Category: ${category}`}
+                        >
+                            {category}
+                        </span>
+                    </div>
+
                     <span className={styles['status']}>
-                        <span className={`${styles['status-dot']} ${getStatusClass(status)}`}></span>
-                        Status: {status}
+                        <span
+                            className={`${styles['status-dot']} ${getStatusClass(status)}`}
+                            aria-label={`Status: ${status}`}
+                            title={`Current status: ${status}`}
+                            role="img"
+                        ></span>
+                        <span
+                            title={`Current status: ${status}`}
+                            aria-label={`Status: ${status}`}
+                        >
+                            {status}
+                        </span>
                     </span>
                 </div>
 
@@ -57,7 +96,8 @@ export default function FeedbackListItem({
                     <Link
                         to={`/feedback/${_id}`}
                         className={`${styles['icon-button']} ${styles['edit-button']}`}
-                        title="Edit"
+                        title="Edit this feedback"
+                        aria-label="Edit this feedback"
                     >
                         ✏️
                     </Link>
@@ -65,7 +105,8 @@ export default function FeedbackListItem({
                     <button
                         className={`${styles['icon-button']} ${styles['delete-button']}`}
                         onClick={handleDelete}
-                        title="Delete"
+                        title="Delete this feedback"
+                        aria-label="Delete this feedback"
                     >
                         🗑️
                     </button>
@@ -96,5 +137,21 @@ const getStatusClass = (status: string) => {
             return styles['status-closed'];
         default:
             return styles['status-default'];
+    }
+};
+
+const getCategoryIcon = (category: string) => {
+    switch (category.toLowerCase()) {
+        case 'bug report':
+        case 'bug':
+            return faBug;
+        case 'feature request':
+        case 'feature':
+            return faLightbulb;
+        case 'complaint':
+            return faExclamationCircle;
+        case 'general':
+        default:
+            return faInfoCircle;
     }
 };

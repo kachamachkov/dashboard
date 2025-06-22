@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--custom" width="64" height="64" viewBox="0 0 256 256" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="feedbackGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4facfe"/>
+      <stop offset="100%" stop-color="#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="feedbackGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#43e97b"/>
+      <stop offset="100%" stop-color="#38f9d7"/>
+    </linearGradient>
+  </defs>
+  <rect x="32" y="32" width="192" height="160" rx="16" fill="url(#feedbackGradient1)"/>
+  <path d="M64 80h128c8.837 0 16 7.163 16 16v48c0 8.837-7.163 16-16 16H96l-32 32v-32H64c-8.837 0-16-7.163-16-16v-48c0-8.837 7.163-16 16-16z" fill="#fff"/>
+  <circle cx="88" cy="112" r="6" fill="url(#feedbackGradient2)"/>
+  <circle cx="112" cy="112" r="6" fill="url(#feedbackGradient2)"/>
+  <circle cx="136" cy="112" r="6" fill="url(#feedbackGradient2)"/>
+</svg>

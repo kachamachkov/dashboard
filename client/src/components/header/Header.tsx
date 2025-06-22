@@ -7,16 +7,18 @@ export default function Header() {
             <nav className={styles['nav']}>
                 <NavLink
                     to="/"
-                    className={styles['nav-link']}
-                    style={({ isActive }) => isActive ? { color: '#007bff' } : {}}
+                    className={({ isActive }) => 
+                        `${styles['nav-link']} ${isActive ? styles['nav-link-active'] : ''}`
+                    }
                 >
                     Dashboard
                 </NavLink>
 
                 <NavLink
                     to="/submit-feedback"
-                    className={styles['nav-link']}
-                    style={({ isActive }) => isActive ? { color: '#007bff' } : {}}
+                    className={({ isActive }) => 
+                        `${styles['nav-link']} ${isActive ? styles['nav-link-active'] : ''}`
+                    }
                 >
                     Create
                 </NavLink>
@@ -24,5 +26,3 @@ export default function Header() {
         </header>
     );
 }
-
-

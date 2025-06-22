@@ -9,7 +9,6 @@
     border: 1px solid #E0E0E0;
     border-radius: 0.5em;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     max-width: 500px;
     margin: auto;
 }
@@ -29,6 +28,7 @@
 .form-field input,
 .form-field select,
 .form-field textarea {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     width: 100%;
     padding: 0.6em 0.8em;
     border: 1px solid #CCC;
@@ -66,7 +66,7 @@
 
 .form-field textarea::placeholder,
 .form-field input::placeholder {
-    font-family: inherit;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     font-size: 1em;
     color: #999;
     opacity: 1;
@@ -74,7 +74,7 @@
 
 
 .form-btn {
-    background-color: #1976D2;
+    background-color: var(--primary-color);
     color: #fff;
     border: none;
     padding: 0.75em 1.5em;
@@ -86,7 +86,7 @@
 }
 
 .form-btn:hover {
-    background-color: #1565C0;
+    background-color: var(--primary-color-hover);
     transform: translateY(-2px);
 }
 
