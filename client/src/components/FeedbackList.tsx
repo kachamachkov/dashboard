@@ -4,6 +4,7 @@ import styles from './FeedbackList.module.css';
 import useSorting from "../hooks/useSorting";
 import SortingControls from "./SortingControls";
 import FilterControls from "./FilterControls";
+import { useFiltering } from "../hooks/useFiltering";
 
 export type FeedbackItem = {
     _id: string;
@@ -25,12 +26,20 @@ export default function FeedbackList() {
     const feedbackQuery = useGetFeedback();
 
     const {
+        filters,
+        filteredItems,
+        setCategory,
+        setStatus,
+        clearFilters
+    } = useFiltering(feedbackQuery.data || []);
+
+    const {
         sortedData,
         sortField,
         sortDirection,
         handleSort
     } = useSorting<FeedbackItem, keyof FeedbackItem>(
-        feedbackQuery.data,
+        filteredItems,
         'none',
         'asc',
         { status: statusOrder }
@@ -53,7 +62,12 @@ export default function FeedbackList() {
                 onSort={handleSort}
             />
 
-            <FilterControls />
+            <FilterControls
+                filters={filters}
+                onCategoryChange={setCategory}
+                onStatusChange={setStatus}
+                onClearFilters={clearFilters}
+            />
 
             <ul className={styles['list']}>
 
