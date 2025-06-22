@@ -1,7 +1,7 @@
 import styles from './FilterControls.module.css';
 
-type Category = 'bug-report' | 'feature-request' | 'general' | 'complaint';
-type Status = 'pending' | 'resolved' | 'closed';
+type Category = 'Bug Report' | 'Feature Request' | 'General' | 'Complaint';
+type Status = 'Pending' | 'Resolved' | 'Closed';
 
 interface FilterControlsProps {
     filters: {
@@ -20,7 +20,6 @@ export default function FilterControls({
     onStatusChange,
     onClearFilters
 }: FilterControlsProps) {
-
     return (
         <>
             <div className={styles['filter-controls']}>
@@ -32,15 +31,15 @@ export default function FilterControls({
                         id="category-filter"
                         className={styles['filter-select']}
                         value={filters.category}
-                        onChange={(e) => onCategoryChange(e.target.value === '' ? 'all' : (e.target.value as Category))}
+                        onChange={(e) => onCategoryChange(e.target.value === 'all' ? 'all' : (e.target.value as Category))}
                     >
+                        <option value="all">All Categories</option>
                         <option value="Bug Report">Bug Report</option>
                         <option value="Feature Request">Feature Request</option>
                         <option value="General">General</option>
                         <option value="Complaint">Complaint</option>
                     </select>
                 </div>
-
                 <div className={styles['filter-section']}>
                     <label htmlFor="status-filter" className={styles['filter-label']}>
                         Status
@@ -49,14 +48,14 @@ export default function FilterControls({
                         id="status-filter"
                         className={styles['filter-select']}
                         value={filters.status}
-                        onChange={(e) => onStatusChange(e.target.value === '' ? 'all' : (e.target.value as Status))}
+                        onChange={(e) => onStatusChange(e.target.value === 'all' ? 'all' : (e.target.value as Status))}
                     >
+                        <option value="all">All Statuses</option>
                         <option value="Pending">Pending</option>
                         <option value="Resolved">Resolved</option>
                         <option value="Closed">Closed</option>
                     </select>
                 </div>
-
                 <button
                     className={styles['clear-filters-btn']}
                     type="button"

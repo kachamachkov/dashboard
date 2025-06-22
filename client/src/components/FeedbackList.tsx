@@ -58,7 +58,7 @@ export default function FeedbackList() {
             <h2>Dashboard</h2>
             <SearchBar
                 onSearch={setSearchTerm}
-                placeholder="Search by name, email, content, category, or status..."
+                placeholder="Search by name, email, or content..."
             />
             <SortingControls
                 sortField={sortField}
