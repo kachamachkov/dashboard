@@ -1,0 +1,23 @@
+.sort-controls {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sort-controls button {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.sort-controls button:hover {
+    background: #f0f0f0;
+}
+
+.active-sort {
+    background: #007acc !important;
+    color: white !important;
+}

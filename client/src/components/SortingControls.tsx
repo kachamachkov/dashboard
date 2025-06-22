@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './FeedbackList.module.css'; // Assuming styles are shared
+import styles from './SortingControls.module.css';
 import type { FeedbackItem } from './FeedbackList';
 
 
