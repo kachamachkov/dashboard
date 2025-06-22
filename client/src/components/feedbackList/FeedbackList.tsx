@@ -1,11 +1,14 @@
+import { useEffect } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import FeedbackListItem from "./feedbackListItem/FeedbackListItem";
-import useGetFeedback from "../../hooks/useGetFeedback";
 import styles from './FeedbackList.module.css';
 import useSorting from "../../hooks/useSorting";
 import SearchBar from "../search/SearchBar";
 import { useFiltering } from "../../hooks/useFiltering";
 import FilterControls from "../filterControls/FilterControls";
 import SortingControls from "../sortingControls/SortingControls";
+import { useInView } from "react-intersection-observer";
+import { useFeedbackList } from "../../hooks/useInfiniteQuery";
 
 export type FeedbackItem = {
     _id: string;
@@ -23,7 +26,25 @@ const statusOrder = {
 };
 
 export default function FeedbackList() {
-    const feedbackQuery = useGetFeedback();
+    const {
+        data,
+        error,
+        fetchNextPage,
+        hasNextPage,
+        isFetchingNextPage,
+        status
+    } = useFeedbackList();
+
+    const { ref, inView } = useInView();
+
+    useEffect(() => {
+        if (inView) {
+            fetchNextPage();
+        }
+    }, [fetchNextPage, inView]);
+
+    const allFeedback = data?.pages.flatMap(page => page.data) ?? [];
+
     const {
         filters,
         filteredItems,
@@ -31,7 +52,7 @@ export default function FeedbackList() {
         setStatus,
         setSearchTerm,
         clearFilters
-    } = useFiltering(feedbackQuery.data || []);
+    } = useFiltering(allFeedback);
 
     const {
         sortedData,
@@ -45,13 +66,10 @@ export default function FeedbackList() {
         { status: statusOrder }
     );
 
-    if (feedbackQuery.isFetching) {
-        return <h2>Loading...</h2>
-    }
 
-    if (feedbackQuery.isError) {
-        return <h2>Failed to load feedback.</h2>
-    }
+
+    if (status === 'pending') return <h2>Loading...</h2>;
+    if (status === 'error') return <h2>Failed to load feedback.</h2>;
 
     return (
         <>
@@ -74,19 +92,14 @@ export default function FeedbackList() {
                 onClearFilters={clearFilters}
             />
             <ul className={styles['list']}>
-                {sortedData && sortedData.map((item: any) => (
+                {sortedData && sortedData.map((item) => (
                     <li key={item._id}>
-                        <FeedbackListItem
-                            _id={item._id}
-                            name={item.name}
-                            email={item.email}
-                            content={item.content}
-                            category={item.category}
-                            status={item.status}
-                        />
+                        <FeedbackListItem {...item} />
                     </li>
                 ))}
             </ul>
+
+            <div style={{ height: '50px' }} ref={ref}>{isFetchingNextPage && <p>Loading more...</p>}</div>
         </>
-    )
+    );
 }

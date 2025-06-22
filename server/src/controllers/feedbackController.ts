@@ -3,8 +3,9 @@ import { FeedbackService } from '../services/feedbackService';
 
 export const getAllFeedback = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-        const feedback = await FeedbackService.getAllFeedback();
-        res.status(200).json(feedback);
+        const page = parseInt(req.query.page as string) || 1;
+        const paginatedResult = await FeedbackService.getAllFeedback(page);
+        res.status(200).json(paginatedResult);
     } catch (error) {
         next(error);
     }

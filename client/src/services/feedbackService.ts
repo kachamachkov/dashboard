@@ -1,16 +1,15 @@
-// In client/src/services/feedbackService.ts
 import axios from "axios";
 
 const baseUrl = 'http://localhost:5000/feedback';
 
 export default {
-    async getAll() {
-        const result = await axios.get(baseUrl);
+    async getPaginated(page: number = 0) {
+        const result = await axios.get(`${baseUrl}?page=${page}`);
         return result.data;
     },
 
     async create(data: any) {
-        const result = await axios.post(baseUrl, data);  // Changed from createUrl
+        const result = await axios.post(baseUrl, data);
         return result;
     },
 
