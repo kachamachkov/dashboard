@@ -40,7 +40,7 @@ export default function FeedbackListItem({
                         onClick={() => setIsExpanded(state => !state)}
                         title={isExpanded ? "Collapse" : "Expand"}
                     >
-                        {isExpanded ? '▼' : '▶'}
+                        {isExpanded ? '-' : '+'}
                     </button>
                 </div>
 

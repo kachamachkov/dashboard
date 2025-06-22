@@ -58,8 +58,8 @@
 }
 
 .status-dot {
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
     display: inline-block;
 }
@@ -82,4 +82,12 @@
 
 .drag-button{
     cursor: grabbing;
+}
+
+.edit-button{
+    filter: grayscale(100%);
+}
+
+.delete-button{
+    filter: grayscale(100%);
 }

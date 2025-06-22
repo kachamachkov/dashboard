@@ -74,7 +74,6 @@ export default function FeedbackForm({
       {submitted ? (
         <FeedbackSubmissionSuccess
           isEdit={!!savedData}
-          // onCreateNew={() => navigate('/submit-feedback')}
           onViewFeedback={() => navigate('/')}
           savedData={savedData}
         />

@@ -33,6 +33,7 @@
     right: 12px;
     color: #666;
     pointer-events: none;
+    filter: grayscale(100%);
   }
   
   .clear-button {
