@@ -3,6 +3,7 @@ import useGetFeedback from "../hooks/useGetFeedback";
 import styles from './FeedbackList.module.css';
 import useSorting from "../hooks/useSorting";
 import SortingControls from "./SortingControls";
+import FilterControls from "./FilterControls";
 
 export type FeedbackItem = {
     _id: string;
@@ -51,6 +52,8 @@ export default function FeedbackList() {
                 sortDirection={sortDirection}
                 onSort={handleSort}
             />
+
+            <FilterControls />
 
             <ul className={styles['list']}>
 
