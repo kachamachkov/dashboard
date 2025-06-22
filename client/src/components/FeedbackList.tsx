@@ -2,8 +2,9 @@ import FeedbackListItem from "./FeedbackListItem";
 import useGetFeedback from "../hooks/useGetFeedback";
 import styles from './FeedbackList.module.css';
 import useSorting from "../hooks/useSorting";
+import SortingControls from "./SortingControls";
 
-type FeedbackItem = {
+export type FeedbackItem = {
     _id: string;
     name: string;
     email: string;
@@ -29,7 +30,7 @@ export default function FeedbackList() {
         handleSort
     } = useSorting<FeedbackItem, keyof FeedbackItem>(
         feedbackQuery.data,
-        'name',
+        'none',
         'asc',
         { status: statusOrder }
     );
@@ -44,34 +45,12 @@ export default function FeedbackList() {
 
     return (
         <>
-            <h2>Feedback Collection</h2>
-            <div className={styles['sort-controls']}>
-                <label>Sort by: </label>
-                <button
-                    onClick={() => handleSort('name')}
-                    className={sortField === 'name' ? styles['active-sort'] : ''}
-                >
-                    Name {sortField === 'name' && (sortDirection === 'asc' ? '↑' : '↓')}
-                </button>
-                <button
-                    onClick={() => handleSort('category')}
-                    className={sortField === 'category' ? styles['active-sort'] : ''}
-                >
-                    Category {sortField === 'category' && (sortDirection === 'asc' ? '↑' : '↓')}
-                </button>
-                <button
-                    onClick={() => handleSort('status')}
-                    className={sortField === 'status' ? styles['active-sort'] : ''}
-                >
-                    Status {sortField === 'status' && (sortDirection === 'asc' ? '↑' : '↓')}
-                </button>
-                <button
-                    onClick={() => handleSort('none')}
-                    className={sortField === 'none' ? styles['active-sort'] : ''}
-                >
-                    Reset
-                </button>
-            </div>
+            <h2>Dashboard</h2>
+            <SortingControls
+                sortField={sortField}
+                sortDirection={sortDirection}
+                onSort={handleSort}
+            />
 
             <ul className={styles['list']}>
 
