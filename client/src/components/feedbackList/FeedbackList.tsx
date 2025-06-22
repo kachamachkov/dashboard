@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useInfiniteQuery } from "@tanstack/react-query";
 import FeedbackListItem from "./feedbackListItem/FeedbackListItem";
 import styles from './FeedbackList.module.css';
 import useSorting from "../../hooks/useSorting";
@@ -29,9 +28,7 @@ const statusOrder = {
 export default function FeedbackList() {
     const {
         data,
-        error,
         fetchNextPage,
-        hasNextPage,
         isFetchingNextPage,
         status
     } = useFeedbackList();

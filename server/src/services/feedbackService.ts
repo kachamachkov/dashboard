@@ -1,10 +1,10 @@
 import { FeedbackObject, CreateFeedbackRequest } from '../types/feedback';
 import { FileUtils } from '../utils/fileUtils';
-import { JSON_FILE_PATH } from '../utils/constants';
+import { JSON_FILE_PATH, feedbackData } from '../utils/constants';
 
 export class FeedbackService {
-    static async getAllFeedback(page: number): Promise<{ data: FeedbackObject[], totalPages: number, currentPage: number }> {
-        const allFeedback = await FileUtils.readFeedbackData(JSON_FILE_PATH);
+    static getAllFeedback(page: number): { data: FeedbackObject[], totalPages: number, currentPage: number } {
+        const allFeedback = feedbackData;
         const pageSize = 10;
         const totalItems = allFeedback.length;
         const totalPages = Math.ceil(totalItems / pageSize);
@@ -18,13 +18,11 @@ export class FeedbackService {
         };
     }
 
-    static async getFeedbackById(id: number): Promise<FeedbackObject | null> {
-        const feedbackData = await FileUtils.readFeedbackData(JSON_FILE_PATH);
+    static getFeedbackById(id: number): FeedbackObject | null {
         return feedbackData.find(item => item._id === id) || null;
     }
 
     static async createFeedback(feedback: CreateFeedbackRequest): Promise<FeedbackObject> {
-        const feedbackData = await FileUtils.readFeedbackData(JSON_FILE_PATH);
         const newFeedback: FeedbackObject = {
             ...feedback,
             _id: Date.now()
@@ -37,7 +35,6 @@ export class FeedbackService {
     }
 
     static async updateFeedback(id: number, updates: Partial<FeedbackObject>): Promise<FeedbackObject | null> {
-        const feedbackData = await FileUtils.readFeedbackData(JSON_FILE_PATH);
         const index = feedbackData.findIndex(item => item._id === id);
 
         if (index === -1) return null;
@@ -49,7 +46,6 @@ export class FeedbackService {
     }
 
     static async deleteFeedback(id: number): Promise<boolean> {
-        const feedbackData = await FileUtils.readFeedbackData(JSON_FILE_PATH);
         const index = feedbackData.findIndex(item => item._id === id);
 
         if (index === -1) return false;

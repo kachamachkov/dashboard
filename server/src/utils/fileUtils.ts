@@ -7,11 +7,17 @@ export class FileUtils {
             const fileContent = await fs.readFile(filePath, 'utf-8');
             return JSON.parse(fileContent);
         } catch (error) {
+            console.error('Error reading feedback data:', error);
             return [];
         }
     }
 
     static async writeFeedbackData(filePath: string, data: FeedbackObject[]): Promise<void> {
-        await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+        try {
+            await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+        } catch (error) {
+            console.error('Error writing feedback data:', error);
+            throw new Error('Failed to write data to file.');
+        }
     }
 }
