@@ -3,15 +3,14 @@ import styles from './FilterControls.module.css';
 type Category = 'bug-report' | 'feature-request' | 'general' | 'complaint';
 type Status = 'pending' | 'resolved' | 'closed';
 
-interface FilterState {
-    category: Category | '';
-    status: Status | '';
-}
-
 interface FilterControlsProps {
-    filters: FilterState;
-    onCategoryChange: (category: Category | '') => void;
-    onStatusChange: (status: Status | '') => void;
+    filters: {
+        category: Category | 'all';
+        status: Status | 'all';
+        searchTerm?: string;
+    };
+    onCategoryChange: (category: Category | 'all') => void;
+    onStatusChange: (status: Status | 'all') => void;
     onClearFilters: () => void;
 }
 
@@ -33,7 +32,7 @@ export default function FilterControls({
                         id="category-filter"
                         className={styles['filter-select']}
                         value={filters.category}
-                        onChange={(e) => onCategoryChange(e.target.value as Category | '')}
+                        onChange={(e) => onCategoryChange(e.target.value === '' ? 'all' : (e.target.value as Category))}
                     >
                         <option value="Bug Report">Bug Report</option>
                         <option value="Feature Request">Feature Request</option>
@@ -50,7 +49,7 @@ export default function FilterControls({
                         id="status-filter"
                         className={styles['filter-select']}
                         value={filters.status}
-                        onChange={(e) => onStatusChange(e.target.value as Status | '')}
+                        onChange={(e) => onStatusChange(e.target.value === '' ? 'all' : (e.target.value as Status))}
                     >
                         <option value="Pending">Pending</option>
                         <option value="Resolved">Resolved</option>

@@ -4,6 +4,7 @@ import styles from './FeedbackList.module.css';
 import useSorting from "../hooks/useSorting";
 import SortingControls from "./SortingControls";
 import FilterControls from "./FilterControls";
+import SearchBar from "./SearchBar";
 import { useFiltering } from "../hooks/useFiltering";
 
 export type FeedbackItem = {
@@ -21,15 +22,14 @@ const statusOrder = {
     'Closed': 2
 };
 
-
 export default function FeedbackList() {
     const feedbackQuery = useGetFeedback();
-
     const {
         filters,
         filteredItems,
         setCategory,
         setStatus,
+        setSearchTerm,
         clearFilters
     } = useFiltering(feedbackQuery.data || []);
 
@@ -56,25 +56,27 @@ export default function FeedbackList() {
     return (
         <>
             <h2>Dashboard</h2>
+            <SearchBar
+                onSearch={setSearchTerm}
+                placeholder="Search by name, email, content, category, or status..."
+            />
             <SortingControls
                 sortField={sortField}
                 sortDirection={sortDirection}
                 onSort={handleSort}
             />
-
             <FilterControls
-                filters={filters}
+                filters={{
+                    category: filters.category,
+                    status: filters.status
+                }}
                 onCategoryChange={setCategory}
                 onStatusChange={setStatus}
                 onClearFilters={clearFilters}
             />
-
             <ul className={styles['list']}>
-
                 {sortedData && sortedData.map((item: any) => (
-                    <li
-                        key={item._id}
-                    >
+                    <li key={item._id}>
                         <FeedbackListItem
                             _id={item._id}
                             name={item.name}
@@ -85,7 +87,6 @@ export default function FeedbackList() {
                         />
                     </li>
                 ))}
-
             </ul>
         </>
     )
