@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './SortingControls.module.css';
 import type { FeedbackItem } from '../feedbackList/FeedbackList';
 
-
 interface SortingControlsProps {
     sortField: keyof FeedbackItem | "none";
     sortDirection: 'asc' | 'desc';

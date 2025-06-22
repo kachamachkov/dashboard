@@ -1,7 +1,8 @@
+import { Routes, Route } from 'react-router-dom';
 import './App.css'
+
 import FeedbackForm from './components/feedbackForm/FeedbackForm'
 import FeedbackList from './components/feedbackList/FeedbackList'
-import { Routes, Route } from 'react-router-dom';
 import FeedbackDetails from './components/feedbackList/feedbackDetails/FeedbackDetails';
 import Header from './components/header/Header';
 
@@ -19,6 +20,6 @@ function App() {
       </Routes>
     </div>
   )
-}
+};
 
 export default App;

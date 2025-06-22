@@ -7,7 +7,7 @@ import feedbackService from "../../services/feedbackService";
 import FeedbackSubmissionSuccess from "./feedbackSubmission/FeedbackSubmission";
 import { useNavigate } from "react-router-dom";
 
-interface FeedbackData {
+export interface FeedbackData {
   _id?: string | null;
   name: string;
   email: string;
@@ -16,7 +16,7 @@ interface FeedbackData {
   status: FeedbackStatus;
 }
 
-interface FeedbackFormProps {
+export interface FeedbackFormProps {
   savedData?: FeedbackData;
   isEditMode?: boolean;
   feedbackId?: string;

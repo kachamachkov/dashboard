@@ -1,14 +1,15 @@
 import axios from "axios";
+import type { FeedbackData } from "../components/feedbackForm/FeedbackForm";
 
 const baseUrl = 'http://localhost:5000/feedback';
 
 export default {
-    async getPaginated(page: number = 0) {
+    async getPaginated(page: number = 1) {
         const result = await axios.get(`${baseUrl}?page=${page}`);
         return result.data;
     },
 
-    async create(data: any) {
+    async create(data: FeedbackData) {
         const result = await axios.post(baseUrl, data);
         return result;
     },
@@ -18,7 +19,7 @@ export default {
         return result.data;
     },
 
-    async update(data: any) {
+    async update(data: FeedbackData) {
         const result = await axios.put(`${baseUrl}/${data._id}`, data);
         return result;
     },
