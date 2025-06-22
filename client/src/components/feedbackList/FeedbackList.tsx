@@ -65,7 +65,7 @@ export default function FeedbackList() {
     );
 
     if (status === 'pending') return <Spinner text="Loading more items..." />;
-    if (status === 'error') return <h2>Failed to load feedback.</h2>;
+    if (status === 'error') return <h2 className={styles['error']}>Failed to load feedback.</h2>;
 
     return (
         <>
