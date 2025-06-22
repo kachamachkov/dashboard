@@ -6,14 +6,12 @@ import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
 
-// Middleware
 app.use(express.json());
 app.use(cors({
     origin: CORS_ORIGIN,
     credentials: true
 }));
 
-// Routes
 app.use('/', feedbackRoutes);
 app.use(errorHandler);
 

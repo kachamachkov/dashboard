@@ -10,7 +10,7 @@
   {
     "_id": 1750626844859,
     "name": "bobi-testing-scheduling",
-    "email": "kachamac@progress.com",
+    "email": "bobi@abv.bg",
     "content": "qweqweqwe",
     "category": "Feature Request",
     "status": "Pending"
@@ -18,7 +18,7 @@
   {
     "_id": 1750608085414,
     "name": "qweqweq",
-    "email": "kachamac@progress.com",
+    "email": "kachamac@example.com",
     "content": "qweqweqweqwqweqweeqweqe",
     "category": "Feature Request",
     "status": "Pending"
@@ -26,7 +26,7 @@
   {
     "_id": 1750607784052,
     "name": "bobi-testing-scheduling",
-    "email": "kachamac@progress.com",
+    "email": "kachamac@example.com",
     "content": "bebe",
     "category": "Feature Request",
     "status": "Resolved"
@@ -42,7 +42,7 @@
   {
     "_id": 1750602944866,
     "name": "qweqwe",
-    "email": "boyan.kachamachkov@progress.com",
+    "email": "boyan.kachamachkov@example.com",
     "content": "qewqweqweqwe",
     "category": "Feature Request",
     "status": "Resolved"
@@ -90,7 +90,7 @@
   {
     "_id": 1750592303729,
     "name": "bobi-testing-scheduling",
-    "email": "kachamac@progress.com",
+    "email": "kachamac@example.com",
     "content": "qweqweqweqeqweqw",
     "category": "Feature Request",
     "status": "Closed"
@@ -114,7 +114,7 @@
   {
     "_id": 1750575395154,
     "name": "qwe",
-    "email": "kachamac@progress.com",
+    "email": "kachamac@example.com",
     "content": "bobi e tuk",
     "category": "Bug Report",
     "status": "Pending"
@@ -146,7 +146,7 @@
   {
     "_id": 1750494616256,
     "name": "qweqwe",
-    "email": "kachamac@progress.com",
+    "email": "kachamac@example.com",
     "content": "qweqwe",
     "category": "Complaint",
     "status": "Closed"
@@ -170,7 +170,7 @@
   {
     "_id": 1750499713276,
     "name": "qweqweq",
-    "email": "kachamac@progress.com",
+    "email": "kachamac@example.com",
     "content": "bobi e tuk",
     "category": "Feature Request",
     "status": "Pending"
@@ -178,7 +178,7 @@
   {
     "_id": 1750499766862,
     "name": "qweqwe",
-    "email": "kachamac@progress.com",
+    "email": "kachamac@example.com",
     "content": "qweqweq",
     "category": "General",
     "status": "Resolved"
@@ -186,7 +186,7 @@
   {
     "_id": 1750500498981,
     "name": "bobi-testing-scheduling",
-    "email": "kachamac@progress.com",
+    "email": "kachamac@example.com",
     "content": "bobi testva tuk be",
     "category": "Feature Request",
     "status": "Pending"
